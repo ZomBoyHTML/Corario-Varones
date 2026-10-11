@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B2340">
+<title>Cancionero</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<main id="vista"></main>
+<nav id="pestanas">
+  <a href="#/" id="tab-lista">Canciones</a>
+  <a href="#/marcas" id="tab-marcas">Marcas <span id="contador"></span></a>
+</nav>
+
+<script>
+  // Lista donde se guardan las canciones (no tocar)
+  window.CANCIONES = [];
+  function registrarCancion(c) { CANCIONES.push(c); }
+</script>
+
+<!-- ===== CANCIONES: una línea por cada archivo de la carpeta "letras" ===== -->
+<script src="letras/cancion-01.js"></script>
+<script src="letras/cancion-02.js"></script>
+<!-- ======================================================================= -->
+
+<script src="app.js"></script>
+</body>
+</html>
