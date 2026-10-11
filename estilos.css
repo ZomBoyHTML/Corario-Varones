@@ -41,8 +41,18 @@ li.marcada .t{background:linear-gradient(transparent 50%,var(--marcador) 50%)}
   flex:none;width:48px;height:48px;margin:2px;border-radius:50%;
   display:grid;place-items:center;color:var(--suave);
 }
-.marca.on{background:var(--resalte);color:#1B2340}
-.marca.on svg path{fill:currentColor}
+.marca{position:relative}
+.marca svg{position:relative;z-index:1}
+.marca.on{color:#B88400}
+.marca.on::before{content:"";position:absolute;left:50%;top:50%;width:36px;height:36px;transform:translate(-50%,-50%);
+  border-radius:50%;background:radial-gradient(circle,rgba(255,216,77,.9) 0%,rgba(255,216,77,.45) 42%,rgba(255,216,77,0) 72%)}
+.marca.on svg{filter:drop-shadow(0 2px 3px rgba(184,132,0,.5))}
+.marca.on svg path{fill:var(--resalte)}
+@media (prefers-color-scheme:dark){
+  .marca.on{color:#FFD84D}
+  .marca.on::before{background:radial-gradient(circle,rgba(255,216,77,.55) 0%,rgba(255,216,77,.22) 45%,rgba(255,216,77,0) 72%)}
+  .marca.on svg{filter:drop-shadow(0 0 4px rgba(255,216,77,.6))}
+}
 .asa{
   flex:none;width:44px;height:52px;display:grid;place-items:center;
   color:var(--suave);touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;
@@ -58,12 +68,16 @@ li.arrastrando{border-color:var(--acento);box-shadow:0 6px 18px rgba(27,35,64,.2
 .herr button{min-width:48px;height:44px;border-radius:10px;font-weight:700}
 .herr .marca{margin:0}
 article{padding:4px 18px 24px}
-article h2{margin:8px 0 2px;font-size:1.5rem;line-height:1.2}
-.meta{margin:0 0 18px;color:var(--suave);font-size:.92rem}
-.letra{font-family:Georgia,"Times New Roman",serif;line-height:1.5;font-size:20px}
-.letra .seccion{margin-top:18px;font-family:system-ui,sans-serif;font-size:.7em;font-weight:700;
-  color:var(--acento);padding-bottom:2px}
-.letra .hueco{height:.7em}
+.meta{margin:-8px 0 18px;color:var(--suave);font-size:.92rem}
+.letra{font-family:Georgia,"Times New Roman",serif;line-height:1.5;font-size:20px;text-align:center}
+.letra .seccion{margin-top:6px;font-weight:700;text-transform:uppercase}
+.letra .coro{font-weight:700}
+.letra .hueco{height:.9em}
+.cabeza{display:flex;align-items:center;justify-content:flex-start;gap:14px;margin:8px 0 18px}
+.cabeza h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.7rem;line-height:1.15}
+.num{order:-1;flex:none;min-width:58px;height:58px;padding:0 6px;display:grid;place-items:center;border-radius:50%;
+  border:2px solid var(--resalte);font-family:Georgia,"Times New Roman",serif;font-weight:700;font-size:1.05rem}
+.meta:empty{display:none}
 .pasos{display:flex;justify-content:space-between;gap:8px;padding:0 12px 16px}
 .pasos a{flex:1;min-width:0;padding:12px;border:1px solid var(--linea);border-radius:10px;
   background:var(--tarjeta);font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -79,3 +93,10 @@ article h2{margin:8px 0 2px;font-size:1.5rem;line-height:1.2}
 #pestanas a.activa{color:var(--tinta);box-shadow:inset 0 -4px 0 var(--resalte)}
 #contador:not(:empty){margin-left:4px;padding:1px 7px;border-radius:99px;background:var(--resalte);color:#1B2340;font-size:.8rem}
 :focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+
+/* Buscador con lupa */
+.barra .buscar{display:flex;align-items:center;gap:8px;margin-top:12px;padding:0 12px;
+  background:var(--tarjeta);border:1px solid var(--linea);border-radius:10px;color:var(--suave)}
+.barra .buscar:focus-within{border-color:var(--acento);box-shadow:0 0 0 2px var(--acento)}
+.barra .buscar input{flex:1;min-width:0;width:auto;margin:0;padding:13px 0;border:0;border-radius:0;
+  background:none;outline:none;color:var(--tinta)}
